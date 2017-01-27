@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>test</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  rel="stylesheet">
+  </head>
+  <body>
+	<p><br/><br/></p>
+	<div class="container">
+  <form id="form-id" class="navbar-form navbar-left" role="search">
+	<div class="form-group">
+    <input id="input-id" type="text" pattern="\d+" class="form-control" placeholder="Please enter your zip code...">
+	<button id="submit-id"  type="submit" class="btn btn-default">search</button>
+	<span id="helpBlock" class="help-block"><small>index must be a number</small></span>
+	</div>
+  </form>
+    <p><br/><br/></p>
+  <table id="table-id" class="table table-bordered table-striped table-hover">
+	<tr>
+	 <td>id</td>
+     <td>date</td>
+     <td>index</td>
+     <td>address</td>
+	 <td>latitude</td>
+     <td>longitude</td>
+	</tr>
+  </table>
+	</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script>
+	
+	$("document").ready(function(){
+	$('#form-id').submit(function(event ){
+	event.preventDefault();
+	if (!$.isEmptyObject($('#input-id').val())) {
+	
+	var geocodingAPI="http://localhost:8080/indexx?param=" + $('#input-id').val();
+	
+    $.getJSON(geocodingAPI,function(data){
+	
+	var myDate = new Date(parseInt(data.dateTime));
+    var number = parseInt(data.id);
+  	var json = $.parseJSON(data.searchResult);
+
+	if (!$.isEmptyObject(json.results[0])) {
+  
+ 	var formatted_address= json.results[0].formatted_address;
+    var latitude = json.results[0].geometry.location.lat;
+    var longitude = json.results[0].geometry.location.lng;
+	
+    $('#table-id').append("<tr><td>"+number+"</td><td>"+myDate.toLocaleString()+"</td><td>"+data.searchRequest+"</td><td>"+formatted_address +"</td><td>"+latitude+"</td><td>"+longitude+"</td></tr>");	
+	
+	} else {alert ('ZERO RESULTS');}
+ 	
+	});
+	} else {alert ('Please enter your zip code');}
+    });
+	});
+    </script>
+  </body>
+</html>
