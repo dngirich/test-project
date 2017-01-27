@@ -38,7 +38,7 @@
 	event.preventDefault();
 	if (!$.isEmptyObject($('#input-id').val())) {
 	
-	var geocodingAPI="http://localhost:8080/indexx?param=" + $('#input-id').val();
+	var geocodingAPI="http://localhost:8080/zipcode?param=" + $('#input-id').val();
 	
     $.getJSON(geocodingAPI,function(data){
 	

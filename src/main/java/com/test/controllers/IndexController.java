@@ -11,7 +11,7 @@ import com.test.service.IndexService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/indexx")
+@RequestMapping("/zipcode")
 @Log
 public class IndexController {
 
