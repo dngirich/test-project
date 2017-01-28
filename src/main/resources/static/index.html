@@ -46,11 +46,11 @@
         var myDate = new Date(parseInt(data.dateTime));
         var number = data.id;
   	var json = $.parseJSON(data.searchResult);
-        var formatted_address= json.results[0].formatted_address;
+        var formattedAddress= json.results[0].formatted_address;
         var latitude = json.results[0].geometry.location.lat;
         var longitude = json.results[0].geometry.location.lng;
     $('#table-id').append("<tbody><tr><td>"+number+"</td><td>"+myDate.toLocaleString()
-    +"</td><td>"+data.searchRequest+"</td><td>"+formatted_address +"</td><td>"+latitude
+    +"</td><td>"+data.searchRequest+"</td><td>"+formattedAddress +"</td><td>"+latitude
     +"</td><td>"+longitude+"</td></tr></tbody>");	
     }).fail(function(){alert ("Non-existent or invalid zipcode");});
     } else {alert ('Please enter your zip code');}
