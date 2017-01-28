@@ -16,14 +16,14 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @Entity
-public class Index implements Serializable {
+public class ZipCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
     private Integer id;
     private Date dateTime;
-    private String searchRequest;
+    private Integer searchRequest;
     @Column(columnDefinition = "TEXT")
     private String searchResult;
 

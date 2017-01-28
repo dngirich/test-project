@@ -18,15 +18,18 @@
 	</div>
   </form>
     <p><br/><br/></p>
-  <table id="table-id" class="table table-bordered table-striped table-hover">
-	<tr>
-	 <td>id</td>
-     <td>date</td>
-     <td>index</td>
-     <td>address</td>
-	 <td>latitude</td>
-     <td>longitude</td>
+  <table class="table table-bordered" id="table-id" >
+    <thead class="thead-inverse">
+	<tr class="active">
+	 <th>№</th>
+     <th>date</th>
+     <th>zip code</th>
+     <th>address</th>
+	 <th>latitude</th>
+     <th>longitude</th>
 	</tr>
+	  </thead>
+	  
   </table>
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -38,25 +41,31 @@
 	event.preventDefault();
 	if (!$.isEmptyObject($('#input-id').val())) {
 	
-	var geocodingAPI="http://localhost:8080/zipcode?param=" + $('#input-id').val();
+	var geocodingAPI="/location?zipcode=" + $('#input-id').val();
 	
     $.getJSON(geocodingAPI,function(data){
 	
 	var myDate = new Date(parseInt(data.dateTime));
-    var number = parseInt(data.id);
+        var number = parseInt(data.id);
   	var json = $.parseJSON(data.searchResult);
 
 	if (!$.isEmptyObject(json.results[0])) {
   
- 	var formatted_address= json.results[0].formatted_address;
-    var latitude = json.results[0].geometry.location.lat;
-    var longitude = json.results[0].geometry.location.lng;
+        var formatted_address= json.results[0].formatted_address;
+        var latitude = json.results[0].geometry.location.lat;
+        var longitude = json.results[0].geometry.location.lng;
 	
-    $('#table-id').append("<tr><td>"+number+"</td><td>"+myDate.toLocaleString()+"</td><td>"+data.searchRequest+"</td><td>"+formatted_address +"</td><td>"+latitude+"</td><td>"+longitude+"</td></tr>");	
+    $('#table-id').append("<tbody><tr><td>"+number+"</td><td>"+myDate.toLocaleString()
+    +"</td><td>"+data.searchRequest+"</td><td>"+formatted_address +"</td><td>"+latitude
+    +"</td><td>"+longitude+"</td></tr></tbody>");	
 	
 	} else {alert ('ZERO RESULTS');}
  	
-	});
+    }).fail(function(){
+         
+         alert ("Can't find non-existent zipcode"); 
+         
+        });
 	} else {alert ('Please enter your zip code');}
     });
 	});

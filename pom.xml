@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.springframework</groupId>
-    <artifactId>index-rest</artifactId>
+    <artifactId>zip-code-rest</artifactId>
     <version>0.1.0</version>
 
     <parent>
@@ -35,7 +35,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>4.3.5.RELEASE</version>
+            <version>4.3.6.RELEASE</version>
             <type>jar</type>
         </dependency>
         <dependency>
