@@ -21,18 +21,18 @@ public class ZipCodeServiceImpl implements ZipCodeService {
     @Override
     public Location find(Integer zipcode) {
 
-        String existingResult = restTemplate.getForObject(
+        String result = restTemplate.getForObject(
         "http://maps.googleapis.com/maps/api/geocode/json?address={zipcode}&sensor=true",
         String.class, zipcode);
 
-        JSONObject jsonObj = new JSONObject(existingResult);
+        JSONObject jsonObj = new JSONObject(result);
         String status = jsonObj.getString("status");
 
-        if (!status.equals("ZERO_RESULTS")) {
+        if (!status.equalsIgnoreCase("ZERO_RESULTS")) {
             Location location = new Location();
             location.setDateTime(new Date());
             location.setSearchRequest(zipcode);
-            location.setSearchResult(existingResult);
+            location.setSearchResult(result);
             zipCodeRepository.save(location);
             return location;
         } else {

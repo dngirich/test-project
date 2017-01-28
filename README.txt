@@ -1,4 +1,6 @@
 
+Requirements: Java 1.8, Maven, Postgre
+
 1.Create empty database with name zipcode in PosgreSql. 
   In application.properties: 
   username=postgres 
