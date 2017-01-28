@@ -16,7 +16,7 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @Entity
-public class ZipCode implements Serializable {
+public class Location implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

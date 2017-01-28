@@ -1,7 +1,7 @@
 package com.test.controller;
 
 import com.test.ZipCodeNotFoundException;
-import com.test.domain.ZipCode;
+import com.test.domain.Location;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.MediaType;
@@ -20,11 +20,11 @@ public class ZipCodeController {
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ZipCode find(@RequestParam(name = "zipcode") Integer zipcode) {
+    public Location find(@RequestParam(name = "zipcode") Integer zipcode) {
         if (zipcode != null) {
             return zipCodeService.find(zipcode);
         } else {
-            throw new ZipCodeNotFoundException("Can't find non-existent zipcode.");
+            throw new ZipCodeNotFoundException("empty zipcode.");
         }
 
     }

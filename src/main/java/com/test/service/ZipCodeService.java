@@ -1,8 +1,8 @@
 package com.test.service;
 
-import com.test.domain.ZipCode;
+import com.test.domain.Location;
 
 public interface ZipCodeService {
 
-    ZipCode find(Integer zipCode);
+    Location find(Integer zipCode);
 }
