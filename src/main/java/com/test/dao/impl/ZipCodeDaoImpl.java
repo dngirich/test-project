@@ -4,6 +4,7 @@ import java.util.List;
 import com.test.dao.ZipCodeDao;
 import com.test.domain.AdressResponseEntity;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
@@ -16,16 +17,21 @@ public class ZipCodeDaoImpl implements ZipCodeDao {
     private EntityManager entityManager;
 
     @Override
-    public void save(AdressResponseEntity location) {
-        entityManager.persist(location);
+    public void save(AdressResponseEntity adress) {
+        entityManager.persist(adress);
     }
 
     @Override
-    public List<AdressResponseEntity> getByZipCode(Integer zipCode) {
-        return (List<AdressResponseEntity>) entityManager
-                .createQuery("from AdressResponseEntity where zipcode=:zipcode")
-                .setParameter("zipcode", zipCode)
-                .getResultList();
+    public AdressResponseEntity getByZipCode(Integer zipCode) {
+        try {
+            return (AdressResponseEntity) entityManager
+                    .createQuery("from AdressResponseEntity where zipcode=:zipcode")
+                    .setParameter("zipcode", zipCode)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+
     }
 
     @SuppressWarnings("unchecked")

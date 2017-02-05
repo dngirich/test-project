@@ -14,7 +14,6 @@ import com.test.beans.AdressResponse;
 @CrossOrigin
 @RestController
 @RequestMapping("/adress")
-
 public class ZipCodeController {
 
     @Autowired
@@ -31,9 +30,10 @@ public class ZipCodeController {
 
     }
 
-    @GetMapping(value = "/",produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.GET, value = "/all",
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<AdressResponse> getAll() {
-        return zipCodeService.getALL();
+        return zipCodeService.getAll();
     }
 }

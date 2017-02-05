@@ -23,6 +23,7 @@ public class AdressResponseEntity implements Serializable {
     @GeneratedValue
     private Integer id;
     private Date dateTime;
+    @Column(unique = true)
     private Integer zipCode;
     private String formattedAddress;
     private Double latitude;

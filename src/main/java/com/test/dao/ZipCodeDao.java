@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ZipCodeDao {
 
-    void save(AdressResponseEntity location);
+    void save(AdressResponseEntity adress);
 
-    List<AdressResponseEntity> getByZipCode(Integer zipCod);
+    AdressResponseEntity getByZipCode(Integer zipCod);
 
     List<AdressResponseEntity> getAll();
 }

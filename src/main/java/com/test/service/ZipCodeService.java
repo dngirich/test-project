@@ -7,6 +7,6 @@ public interface ZipCodeService {
 
     AdressResponse find(Integer zipCode);
 
-    List<AdressResponse> getALL();
+    List<AdressResponse> getAll();
 
 }

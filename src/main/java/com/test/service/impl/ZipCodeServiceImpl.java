@@ -24,21 +24,20 @@ public class ZipCodeServiceImpl implements ZipCodeService {
     private AdressMapper adressMapper;
 
     @Override
-    public AdressResponse find(Integer zipcode) {
-        List<AdressResponse> existingAdress = adressMapper.from(zipCodeDao
-                .getByZipCode(zipcode));
-        if (!existingAdress.isEmpty()) {
-            return existingAdress.get(0);
+    public AdressResponse find(Integer zipCode) {
+        AdressResponseEntity existingAdress = zipCodeDao.getByZipCode(zipCode);
+        if (existingAdress != null) {
+            return adressMapper.from(existingAdress);
         } else {
             GoogleGeoCodeResponse result = restTemplate.getForObject(
-            "http://maps.googleapis.com/maps/api/geocode/json?address={zipcode}&sensor=true",
-            GoogleGeoCodeResponse.class, zipcode);
+                    "http://maps.googleapis.com/maps/api/geocode/json?address={zipcode}&sensor=true",
+                    GoogleGeoCodeResponse.class, zipCode);
             String status = result.getStatus();
 
             if (!status.equalsIgnoreCase("ZERO_RESULTS")) {
                 AdressResponseEntity adress = new AdressResponseEntity();
                 adress.setDateTime(new Date());
-                adress.setZipCode(zipcode);
+                adress.setZipCode(zipCode);
                 adress.setFormattedAddress(result.getResults().get(0)
                         .getFormatted_address());
                 adress.setLatitude(Double.parseDouble(result.getResults().get(0)
@@ -55,7 +54,7 @@ public class ZipCodeServiceImpl implements ZipCodeService {
     }
 
     @Override
-    public List<AdressResponse> getALL() {
+    public List<AdressResponse> getAll() {
         return adressMapper.from(zipCodeDao.getAll());
     }
 }
