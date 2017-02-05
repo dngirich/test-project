@@ -1,5 +1,6 @@
-package com.test.domain;
+package com.test.beans;
 
+import com.test.domain.*;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,16 +16,16 @@ import java.util.Date;
 @Getter
 @ToString
 @NoArgsConstructor
-@Entity
-public class Location implements Serializable {
+
+public class AdressResponse implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue
+
     private Integer id;
     private Date dateTime;
-    private Integer searchRequest;
-    @Column(columnDefinition = "TEXT")
-    private String searchResult;
+    private Integer zipCode;
+    private String formattedAddress;
+    private Double latitude;
+    private Double longitude;
 
 }

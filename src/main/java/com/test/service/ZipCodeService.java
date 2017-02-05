@@ -1,8 +1,12 @@
 package com.test.service;
 
-import com.test.domain.Location;
+import com.test.beans.AdressResponse;
+import java.util.List;
 
 public interface ZipCodeService {
 
-    Location find(Integer zipCode);
+    AdressResponse find(Integer zipCode);
+
+    List<AdressResponse> getALL();
+
 }

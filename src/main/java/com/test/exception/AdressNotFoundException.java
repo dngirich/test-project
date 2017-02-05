@@ -1,8 +1,8 @@
-package com.test;
+package com.test.exception;
 
-public class LocationNotFoundException extends RuntimeException {
+public class AdressNotFoundException extends RuntimeException {
 
-    public LocationNotFoundException(String message) {
+    public AdressNotFoundException(String message) {
         super(message);
     }
 }

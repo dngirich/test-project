@@ -1,4 +1,4 @@
-package com.test;
+package com.test.exception;
 
 public class ZipCodeNotFoundException extends RuntimeException {
 

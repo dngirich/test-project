@@ -16,15 +16,16 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @Entity
-public class Location implements Serializable {
+public class AdressResponseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
     private Integer id;
     private Date dateTime;
-    private Integer searchRequest;
-    @Column(columnDefinition = "TEXT")
-    private String searchResult;
+    private Integer zipCode;
+    private String formattedAddress;
+    private Double latitude;
+    private Double longitude;
 
 }
