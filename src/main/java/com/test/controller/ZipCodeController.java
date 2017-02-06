@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import com.test.service.ZipCodeService;
 import java.util.List;
 import org.springframework.http.HttpStatus;
-import com.test.beans.AdressResponse;
+import com.test.beans.AddressResponse;
 
 @CrossOrigin
 @RestController
@@ -21,9 +21,9 @@ public class ZipCodeController {
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public AdressResponse find(@RequestParam(name = "zipcode") Integer zipcode) {
+    public AddressResponse findByZipCode(@RequestParam(name = "zipcode") Integer zipcode) {
         if (zipcode != null) {
-            return zipCodeService.find(zipcode);
+            return zipCodeService.getByZipCode(zipcode);
         } else {
             throw new ZipCodeNotFoundException("empty zipcode.");
         }
@@ -33,7 +33,7 @@ public class ZipCodeController {
     @RequestMapping(method = RequestMethod.GET, value = "/all",
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public List<AdressResponse> getAll() {
-        return zipCodeService.getAll();
+    public List<AddressResponse> getAllAddresses() {
+        return zipCodeService.getAllAddresses();
     }
 }

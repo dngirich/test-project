@@ -1,15 +1,15 @@
 package com.test.dao;
 
-import com.test.domain.AdressResponseEntity;
+import com.test.domain.AddressResponseEntity;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ZipCodeDao {
 
-    void save(AdressResponseEntity adress);
+    void save(AddressResponseEntity adress);
 
-    AdressResponseEntity getByZipCode(Integer zipCod);
+    AddressResponseEntity getByZipCode(Integer zipCod);
 
-    List<AdressResponseEntity> getAll();
+    List<AddressResponseEntity> getAllAddresses();
 }

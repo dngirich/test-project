@@ -17,7 +17,7 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 
-public class AdressResponse implements Serializable {
+public class AddressResponse implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

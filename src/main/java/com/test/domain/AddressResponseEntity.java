@@ -15,8 +15,8 @@ import java.util.Date;
 @Getter
 @ToString
 @NoArgsConstructor
-@Entity
-public class AdressResponseEntity implements Serializable {
+@Entity(name = "AdressResponse")
+public class AddressResponseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

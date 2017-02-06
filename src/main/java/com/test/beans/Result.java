@@ -1,6 +1,5 @@
 package com.test.beans;
 
-import com.test.domain.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

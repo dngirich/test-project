@@ -1,12 +1,12 @@
 package com.test.service;
 
-import com.test.beans.AdressResponse;
+import com.test.beans.AddressResponse;
 import java.util.List;
 
 public interface ZipCodeService {
 
-    AdressResponse find(Integer zipCode);
+    AddressResponse getByZipCode(Integer zipCode);
 
-    List<AdressResponse> getAll();
+    List<AddressResponse> getAllAddresses();
 
 }
