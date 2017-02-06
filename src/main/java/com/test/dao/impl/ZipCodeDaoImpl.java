@@ -15,7 +15,7 @@ public class ZipCodeDaoImpl implements ZipCodeDao {
     private EntityManager entityManager;
 
     @Override
-    public void save(AddressResponseEntity address) {
+    public void saveAddress(AddressResponseEntity address) {
         entityManager.persist(address);
     }
 
@@ -29,7 +29,6 @@ public class ZipCodeDaoImpl implements ZipCodeDao {
         } catch (NoResultException e) {
             return null;
         }
-
     }
 
     @SuppressWarnings("unchecked")
@@ -37,5 +36,4 @@ public class ZipCodeDaoImpl implements ZipCodeDao {
     public List<AddressResponseEntity> getAllAddresses() {
         return entityManager.createQuery("from AdressResponse").getResultList();
     }
-
 }

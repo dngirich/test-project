@@ -1,4 +1,4 @@
-package com.test.beans;
+package com.test.bean;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
 package com.test.service;
 
-import com.test.beans.AddressResponse;
+import com.test.bean.AddressResponse;
 import java.util.List;
 
 public interface ZipCodeService {

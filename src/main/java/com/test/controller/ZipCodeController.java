@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import com.test.service.ZipCodeService;
 import java.util.List;
 import org.springframework.http.HttpStatus;
-import com.test.beans.AddressResponse;
+import com.test.bean.AddressResponse;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/adress")
+@RequestMapping("/address")
 public class ZipCodeController {
 
     @Autowired
@@ -27,11 +27,10 @@ public class ZipCodeController {
         } else {
             throw new ZipCodeNotFoundException("empty zipcode.");
         }
-
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/all",
-            produces = MediaType.APPLICATION_JSON_VALUE)
+                    produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<AddressResponse> getAllAddresses() {
         return zipCodeService.getAllAddresses();

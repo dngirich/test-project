@@ -24,5 +24,4 @@ public class Application extends SpringBootServletInitializer {
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
     }
-
 }

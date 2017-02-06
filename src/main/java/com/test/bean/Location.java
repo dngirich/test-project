@@ -1,6 +1,5 @@
-package com.test.beans;
+package com.test.bean;
 
-import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,9 +9,9 @@ import lombok.ToString;
 @Getter
 @ToString
 @NoArgsConstructor
-public class GoogleGeoCodeResponse {
+public class Location {
 
-    private List<Result> results;
-    private String status;
+    private String lat;
+    private String lng;
 
 }

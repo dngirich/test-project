@@ -1,6 +1,6 @@
 $("document").ready(function () {
     var rowNumber = 1;
-    $.getJSON("/adress/all", function (data) {
+    $.getJSON("/address/all", function (data) {
         $.each(data, function () {
             var table = $('#table-id').DataTable();
             table.row.add([
@@ -17,7 +17,7 @@ $("document").ready(function () {
     $('#form-id').submit(function (event) {
         event.preventDefault();
         if (!$.isEmptyObject($('#input-id').val())) {
-            var geocodingAPI = "/adress?zipcode=" + $('#input-id').val();
+            var geocodingAPI = "/address?zipcode=" + $('#input-id').val();
             $.getJSON(geocodingAPI, function (data) {
                 var tab = $('#table-id').DataTable();
                 tab.row.add([

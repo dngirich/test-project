@@ -1,6 +1,6 @@
 package com.test.mapper;
 
-import com.test.beans.AddressResponse;
+import com.test.bean.AddressResponse;
 import com.test.domain.AddressResponseEntity;
 import java.util.List;
 

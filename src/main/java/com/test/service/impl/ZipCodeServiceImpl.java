@@ -1,8 +1,8 @@
 package com.test.service.impl;
 
-import com.test.beans.AddressResponse;
+import com.test.bean.AddressResponse;
 import com.test.exception.AdressNotFoundException;
-import com.test.beans.GoogleGeoCodeResponse;
+import com.test.bean.GoogleGeoCodeResponse;
 import com.test.domain.AddressResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +47,7 @@ public class ZipCodeServiceImpl implements ZipCodeService {
                 address.setLongitude(Double.parseDouble(result.getResults().get(0)
                         .getGeometry().getLocation().getLng()));
 
-                zipCodeDao.save(address);
+                zipCodeDao.saveAddress(address);
                 return addressMapper.from(address);
             } else {
                 throw new AdressNotFoundException("Non-existent or invalid zipcode");

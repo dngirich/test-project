@@ -1,6 +1,6 @@
 package com.test.mapper;
 
-import com.test.beans.AddressResponse;
+import com.test.bean.AddressResponse;
 import com.test.domain.AddressResponseEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,21 +12,21 @@ public class AddressMapperImpl implements AddressMapper {
     @Override
     public AddressResponse from(AddressResponseEntity entity) {
 
-        AddressResponse adress = new AddressResponse();
-        adress.setId(entity.getId());
-        adress.setDateTime(entity.getDateTime());
-        adress.setZipCode(entity.getZipCode());
-        adress.setFormattedAddress(entity.getFormattedAddress());
-        adress.setLatitude(entity.getLatitude());
-        adress.setLongitude(entity.getLongitude());
-        return adress;
+        AddressResponse address = new AddressResponse();
+        address.setId(entity.getId());
+        address.setDateTime(entity.getDateTime());
+        address.setZipCode(entity.getZipCode());
+        address.setFormattedAddress(entity.getFormattedAddress());
+        address.setLatitude(entity.getLatitude());
+        address.setLongitude(entity.getLongitude());
+        return address;
     }
 
     @Override
     public List<AddressResponse> from(List<AddressResponseEntity> entities) {
 
         List<AddressResponse> result = new ArrayList<>();
-        entities.stream().map((entity) -> transformToAdressResponse(entity))
+        entities.stream().map((entity) -> transformToAddressResponse(entity))
                 .forEach((bean) -> {
                     result.add(bean);
                 });
@@ -34,15 +34,15 @@ public class AddressMapperImpl implements AddressMapper {
 
     }
 
-    private AddressResponse transformToAdressResponse(AddressResponseEntity entity) {
-        AddressResponse adress = new AddressResponse();
-        adress.setId(entity.getId());
-        adress.setDateTime(entity.getDateTime());
-        adress.setZipCode(entity.getZipCode());
-        adress.setFormattedAddress(entity.getFormattedAddress());
-        adress.setLatitude(entity.getLatitude());
-        adress.setLongitude(entity.getLongitude());
-        return adress;
+    private AddressResponse transformToAddressResponse(AddressResponseEntity entity) {
+        AddressResponse address = new AddressResponse();
+        address.setId(entity.getId());
+        address.setDateTime(entity.getDateTime());
+        address.setZipCode(entity.getZipCode());
+        address.setFormattedAddress(entity.getFormattedAddress());
+        address.setLatitude(entity.getLatitude());
+        address.setLongitude(entity.getLongitude());
+        return address;
     }
 
 }
